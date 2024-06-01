@@ -1,0 +1,158 @@
+--------------------Day 1---------------------
+Python : 
+1. Python is a dynamically typed ( the languages that do not require any pre-defined data type for any variable as it is interpreted at runtime by the machine itself), general purpose programming language.
+2. It supports an object-oriented programming approach as well as a functional programming approach.
+3. It is Interpreted, also known as scripting language (a language in which the implementations execute instructions directly without earlier compiling a program into machine language) and platform-independent (can run on multiple hardware and operating systems without any modification requirements).
+
+--------------------Day 3---------------------
+Modules and pip : 
+-----> MODULES <------
+Modules are simply files with the “. py” extension containing Python code that can be imported inside another python program.
+1. Built in Modules - These modules are ready to import and use and ships with the python interpreter. there is no need to install such modules explicitly.
+2. External Modules - These modules are imported from a third party file or can be installed using a package manager like pip or conda. Since this code is written by someone else, we can install different versions of a same module with time.
+
+-------> PIP <--------
+PIP is a package manager to install a python module.
+-------> pip command <-------
+The pip command looks for the package in PyPI, resolves its dependencies, and installs everything in your current Python environment to ensure that requests will work.
+pip commands - install, uninstall, update
+
+-------------------------Question : Why python doesn't have a main() function?------------------------
+Some programming languages, such as C/C++, Java, employ the main function as the program's execution entry.
+These are compiled languages, which require code to be compiled into executable binaries for the operating system/bootloader to find the program's start, therefore you must define this one function.
+
+Simply said, there is a significant beginning that must be defined in a vast pile of executable code.
+
+However, Python is an interpreted language, also known as a scripting language. The running process runs from top to bottom, line by line, which means that its starting point is known.
+Each .py file is an executable file that can be used as the program's entry point, implying that the program's entry point is flexible and no convention must be followed.
+
+-----------------------Question : How does a python file with main function gets executed-------------------------
+In Python, the execution of a program with a main function is typically structured to ensure that certain code is run only when the script is executed directly, rather than when it is imported as a module in another script. This is achieved using the if __name__ == "__main__": idiom. (It doesn't change the starting point of execution)
+
+----------------> Execution Flow
+Script Execution: When the script is executed, the Python interpreter reads the file and defines the functions but does not execute them immediately.
+
+Define Functions: The interpreter encounters the def main(): line and defines the main function, but does not execute it.
+
+Conditional Check: The interpreter reaches the if __name__ == "__main__": line.
+
+If the script is being run directly (e.g., python script.py), the __name__ variable is set to "__main__", and the condition evaluates to True.
+If the script is being imported as a module, the __name__ variable is set to the name of the script/module (e.g., script), and the condition evaluates to False.
+Function Call: If the condition is True, the main function is called, and the code inside main is executed.
+
+--------------------Day 5-------------------------
+Print function syntax : 
+print(object(s), sep=separator, end=end, file=file, flush=flush)
+
+------------------Day 9--------------------
+# Typecasting in python
+The conversion of one data type into the other data type is known as type casting in python or type conversion in python.
+
+Python supports a wide variety of functions or methods like: int(), float(), str(), ord(), hex(), oct(), tuple(), set(), list(), dict(), etc. for the type casting in python.
+
+1. Explicit Conversion (Explicit type casting in python)
+2. Implicit Conversion (Implicit type casting in python).
+--------->Explicit typecasting<----------:
+The conversion of one data type into another data type, done via developer or programmer's intervention or manually as per the requirement, is known as explicit type conversion. 
+
+It can be achieved with the help of Python’s built-in type conversion functions such as int(), float(), hex(), oct(), str(), etc .
+
+
+--------->Implicit type casting<---------:
+Data types in Python do not have the same level i.e. ordering of data types is not the same in Python. Some of the data types have higher-order, and some have lower order. While performing any operations on variables with different data types in Python, one of the variable's data types will be changed to the higher data type. According to the level, one data type is converted into other by the Python interpreter itself (automatically). This is called, implicit typecasting in python.
+
+Python converts a smaller data type to a higher data type to prevent data loss.
+
+-------------------------------Day 11---------------------------------
+Strings : immutable (strings have the property of immutability which means they cannot be mutated or changed. You can assign strings to variables, and reassign new strings to the same variable, but individual characters within a string cannot be reassigned.)
+Multiline String : 
+'''
+Hey guys
+Good afternoon
+I am learning Strings
+'''
+
+---------------------------------Day 20---------------------------
+Function : A function is a block of code that performs a specific task whenever it is called. In bigger programs, where we have large amounts of code, it is advisable to create or use existing functions that make the program flow organized and neat.
+
+There are two types of functions:
+
+1. Built-in functions
+
+These functions are defined and pre-coded in python. Some examples of built-in functions are as follows:
+min(), max(), len(), sum(), type(), range(), dict(), list(), tuple(), set(), print(), etc.
+
+2. User-defined functions
+
+We can create functions to perform specific tasks as per our needs. Such functions are called user-defined functions.
+
+--------------------------Day 21---------------------
+There are four types of arguments that we can provide in a function:
+
+- Default Arguments
+- Keyword Arguments
+- Variable length Arguments
+- Required Arguments
+
+-->Default arguments:
+We can provide a default value while creating a function. This way the function assumes a default value even if a value is not provided in the function call for that argument.
+
+-->Keyword arguments:
+We can provide arguments with key = value, this way the interpreter recognizes the arguments by the parameter name. Hence, the the order in which the arguments are passed does not matter.
+
+-->Required arguments:
+In case we don’t pass the arguments with a key = value syntax, then it is necessary to pass the arguments in the correct positional order and the number of arguments passed should match with actual function definition.
+
+-->Variable-length arguments:
+Sometimes we may need to pass more arguments than those defined in the actual function. This can be done using variable-length arguments.
+
+There are two ways to achieve this:
+
+--> Arbitrary Arguments:
+While creating a function, pass a * before the parameter name while defining the function. The function accesses the arguments by processing them in the form of tuple.
+
+Example:
+```python
+def name(*name):
+    print("Hello,", name[0], name[1], name[2])
+
+name("James", "Buchanan", "Barnes")
+```
+Output:
+```
+Hello, James Buchanan Barnes
+ ```
+
+--> Keyword Arbitrary Arguments:
+While creating a function, pass a * before the parameter name while defining the function. The function accesses the arguments by processing them in the form of dictionary.
+
+Example:
+```python
+def name(**name):
+    print("Hello,", name["fname"], name["mname"], name["lname"])
+
+name(mname = "Buchanan", lname = "Barnes", fname = "James")
+```
+Output:
+```
+Hello, James Buchanan Barnes
+```
+return Statement :
+The return statement is used to return the value of the expression back to the calling function.
+
+---------------------Day 22------------------
+List comprehensions are used for creating new lists from other iterables like lists, tuples, dictionaries, sets, and even in arrays and strings.
+
+Syntax:
+
+List = [Expression(item) for item in iterable if Condition]
+
+Expression : It is the item which is being iterated.
+Iterable: It can be list, tuples, dictionaries, sets, and even in arrays and strings.
+Condition: Condition checks if the item should be added to the new list or not. 
+
+Example 1: Accepts items with the small letter “o” in the new list 
+
+names = ["Milo", "Sarah", "Bruno", "Anastasia", "Rosa"]
+namesWith_O = [item for item in names if "o" in item]
+print(namesWith_O)
