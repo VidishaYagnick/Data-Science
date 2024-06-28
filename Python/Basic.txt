@@ -198,3 +198,757 @@ finally:
     
 The finally block is executed irrespective of the outcome of try……except…..else blocks
 **NOTE** : One of the important use cases of finally block is in a function which returns a value.
+
+------------------------Day 38-------------------
+Raising Custom errors : 
+In python, we can raise custom errors by using the raise keyword.
+
+salary = int(input("Enter salary amount: "))
+if not 2000 < salary < 5000:
+    raise ValueError("Not a valid salary")
+
+Defining Custom Exceptions : 
+In Python, we can define custom exceptions by creating a new class that is derived from the built-in Exception class.
+
+Here's the syntax to define custom exceptions:
+
+class CustomError(Exception):
+  # code ...
+  pass
+
+try:
+  # code ...
+
+except CustomError:
+  # code...
+
+This is useful because sometimes we might want to do something when a particular exception is raised. For example, sending an error report to the admin, calling an api, etc.
+
+-----------------------------Day 41-------------------
+Short hand if else : 
+There is also a shorthand syntax for the if-else statement that can be used when the condition being tested is simple and the code blocks to be executed are short. Here's an example:
+
+One line if else statement, with 3 conditions:
+
+a = 330
+b = 330
+print("A") if a > b else print("=") if a == b else print("B")
+
+Another Example
+
+result = value_if_true if condition else value_if_false
+c = 9 if a>b else 0 
+
+The shorthand syntax can be a convenient way to write simple if-else statements, especially when you want to assign a value to a variable based on a condition.
+However, it's not suitable for more complex situations where you need to execute multiple statements or perform more complex logic. 
+
+------------------Day 42--------------
+Enumerate function in python :
+The enumerate function is a built-in function in Python that allows you to loop over a sequence (such as a list, tuple, or string) and get the index and value of each element in the sequence at the same time. Here's a basic example of how it works:
+
+# Loop over a list and print the index and value of each element
+fruits = ['apple', 'banana', 'mango']
+for index, fruit in enumerate(fruits):
+    print(index, fruit)
+
+The enumerate function returns a tuple containing the index and value of each element in the sequence.
+
+Changing the start index : 
+By default, the enumerate function starts the index at 0, but you can specify a different starting index by passing it as an argument to the enumerate function:
+
+# Loop over a list and print the index (starting at 1) and value of each element
+fruits = ['apple', 'banana', 'mango']
+for index, fruit in enumerate(fruits, start=1):
+    print(index, fruit)
+This will output:
+
+1 apple
+2 banana
+3 mango
+
+-----------------Day 44----------------
+How importing in python works : 
+Importing in Python is the process of loading code from a Python module into the current script. This allows you to use the functions and variables defined in the module in your current script, as well as any additional modules that the imported module may depend on.
+
+Example : import math
+
+Once a module is imported, you can use any of the functions and variables defined in the module by using the dot notation. 
+
+Example : 
+import math
+
+result = math.sqrt(9)
+print(result)  # Output: 3.0
+
+--->from keyword : 
+
+from math import sqrt
+
+result = sqrt(9)
+print(result)  # Output: 3.0
+
+Import multiple functions or variables at once by separating them with a comma:
+
+from math import sqrt, pi
+
+result = sqrt(9)
+print(result)  # Output: 3.0
+
+print(pi)  # Output: 3.141592653589793
+
+--->importing everything : 
+It's also possible to import all functions and variables from a module using the * wildcard. However, this is generally not recommended as it can lead to confusion and make it harder to understand where specific functions and variables are coming from.
+
+from math import *
+
+result = sqrt(9)
+print(result)  # Output: 3.0
+
+print(pi)  # Output: 3.141592653589793
+
+---> as keyword : 
+
+import math as m
+
+result = m.sqrt(9)
+print(result)  # Output: 3.0
+
+print(m.pi)  # Output: 3.141592653589793
+
+
+--->The dir function : 
+Finally, Python has a built-in function called dir that you can use to view the names of all the functions and variables defined in a module. This can be helpful for exploring and understanding the contents of a new module.
+
+import math
+
+print(dir(math))
+
+This will output a list of all the names defined in the math module, including functions like sqrt and pi, as well as other variables and constants.
+
+-------------------Day 45----------------
+if "__name__ == "__main__" in Python :
+The if __name__ == "__main__" idiom is a common pattern used in Python scripts to determine whether the script is being run directly or being imported as a module into another script.
+
+In Python, the __name__ variable is a built-in variable that is automatically set to the name of the current module. When a Python script is run directly, the __name__ variable is set to the string __main__ When the script is imported as a module into another script, the __name__ variable is set to the name of the module.
+
+This idiom is useful because it allows you to reuse code from a script by importing it as a module into another script, without running the code in the original script.
+
+-------------------------DAY 46----------------
+Os module in python :
+The os module in Python is a built-in library that provides functions for interacting with the operating system. It allows to perform a wide variety of tasks, such as reading and writing files, interacting with the file system, and running system commands.
+
+Reading and writing files The os module provides functions for opening, reading, and writing files. For example, to open a file for reading, you can use the open function:
+
+import os
+
+# Open the file in read-only mode
+f = os.open("myfile.txt", os.O_RDONLY)
+
+# Read the contents of the file
+contents = os.read(f, 1024)
+
+# Close the file
+os.close(f)
+To open a file for writing, you can use the os.O_WRONLY flag:
+
+import os
+
+# Open the file in write-only mode
+f = os.open("myfile.txt", os.O_WRONLY)
+
+# Write to the file
+os.write(f, b"Hello, world!")
+
+# Close the file
+os.close(f)
+Interacting with the file system
+The os module also provides functions for interacting with the file system. For example, you can use the os.listdir function to get a list of the files in a directory:
+
+import os
+
+# Get a list of the files in the current directory
+files = os.listdir(".")
+print(files)  # Output: ['myfile.txt', 'otherfile.txt']
+You can also use the os.mkdir function to create a new directory:
+
+import os
+
+# Create a new directory
+os.mkdir("newdir")
+Running system commands
+Finally, the os module provides functions for running system commands. For example, you can use the os.system function to run a command and get the output:
+
+import os
+
+# Run the "ls" command and print the output
+output = os.system("ls")
+print(output)  # Output: ['myfile.txt', 'otherfile.txt']
+You can also use the os.popen function to run a command and get the output as a file-like object:
+
+import os
+
+# Run the "ls" command and get the output as a file-like object
+f = os.popen("ls")
+
+# Read the contents of the output
+output = f.read()
+print(output)  # Output: ['myfile.txt', 'otherfile.txt']
+
+# Close the file-like object
+f.close()
+In summary, the os module in Python is a built-in library that provides a wide variety of functions for interacting with the operating system. It allows you to perform tasks such as reading and writing files, interacting with the file system, and running system commands.
+
+-------------------Day 48-----------------
+Local vs global variable : 
+A local variable is a variable that is defined within a function and is only accessible within that function. It is created when the function is called and is destroyed when the function returns.
+
+On the other hand, a global variable is a variable that is defined outside of a function and is accessible from within any function in your code(as far as same name variable is not inside function).
+
+x = 10 # global variable
+
+def my_function():
+  y = 5 # local variable
+  print(y)
+
+my_function()
+print(x)
+print(y) # this will cause an error because y is a local variable and is not accessible outside of the function
+
+The global keyword : 
+
+The global keyword is used to declare that a variable is a global variable and should be accessed from the global scope.
+
+x = 10 # global variable
+
+def my_function():
+  global x
+  x = 5 # this will change the value of the global variable x
+  y = 5 # local variable
+
+my_function()
+print(x) # prints 5
+print(y) # this will cause an error because y is a local variable and is not accessible outside of the function
+
+It's important to note that it's generally considered good practice to avoid modifying global variables from within functions, as it can lead to unexpected behavior and make your code harder to debug.
+
+-------------------Day 49------------
+File handling : 
+
+Opening a File : 
+Before we can perform any operations on a file, we must first open it. Python provides the open() function to open a file. It takes two arguments: the name of the file and the mode in which the file should be opened. The mode can be 'r' for reading, 'w' for writing, or 'a' for appending.
+
+f = open('myfile.txt', 'r')
+
+By default, the open() function returns a file object that can be used to read from or write to the file, depending on the mode.
+
+Modes in file : 
+There are various modes in which we can open files.
+
+read (r): This mode opens the file for reading only and gives an error if the file does not exist. This is the default mode if no mode is passed as a parameter.
+
+write (w): This mode opens the file for writing only and creates a new file if the file does not exist.
+
+append (a): This mode opens the file for appending only and creates a new file if the file does not exist.
+
+create (x): This mode creates a file and gives an error if the file already exists.
+
+text (t): Apart from these modes we also need to specify how the file must be handled. t mode is used to handle text files. t refers to the text mode. There is no difference between r and rt or w and wt since text mode is the default. The default mode is 'r' (open for reading text, synonym of 'rt' ).
+
+binary (b): used to handle binary files (images, pdfs, etc).
+
+Reading from a File : 
+
+The read() method reads the entire contents of the file and returns it as a string.
+
+f = open('myfile.txt', 'r')
+contents = f.read()
+print(contents)
+Writing to a File
+To write to a file, we first need to open it in write mode.
+
+f = open('myfile.txt', 'w')
+We can then use the write() method to write to the file.
+
+f = open('myfile.txt', 'w')
+f.write('Hello, world!')
+Keep in mind that writing to a file will overwrite its contents. If you want to append to a file instead of overwriting it, you can open it in append mode.
+
+f = open('myfile.txt', 'a')
+f.write('Hello, world!')
+Closing a File
+It is important to close a file after you are done with it. This releases the resources used by the file and allows other programs to access it.
+
+To close a file, you can use the close() method.
+
+f = open('myfile.txt', 'r')
+# ... do something with the file
+f.close()
+The 'with' statement
+Alternatively, you can use the with statement to automatically close the file after you are done with it.
+
+with open('myfile.txt', 'r') as f:
+    # ... do something with the file
+
+---------------------Day 52------------------------
+-->Lambda Functions in Python
+In Python, a lambda function is a small anonymous function without a name. It is defined using the lambda keyword and has the following syntax:
+
+lambda arguments: expression
+
+Lambda functions are often used in situations where a small function is required for a short period of time. They are commonly used as arguments to higher-order functions, such as map, filter, and reduce.
+
+# Function to double the input
+def double(x):
+  return x * 2
+
+# Lambda function to double the input
+lambda x: x * 2
+
+-------------------Day 53-----------------
+-->Map, filter and reduce
+In Python, the map, filter, and reduce functions are built-in functions that allow you to apply a function to a sequence of elements and return a new sequence. These functions are known as higher-order functions, as they take other functions as arguments.
+
+-->Map
+The map function applies a function to each element in a sequence and returns a new sequence containing the transformed elements. 
+
+map(function, iterable)
+
+The function argument is a function that is applied to each element in the iterable argument. The iterable argument can be a list, tuple, or any other iterable object.
+
+numbers = [1, 2, 3, 4, 5]
+doubled = map(lambda x: x * 2, numbers)
+print(list(doubled))
+
+-->Filter
+The filter function filters a sequence of elements based on a given predicate (a function that returns a boolean value) and returns a new sequence containing only the elements that meet the predicate.
+
+filter(predicate, iterable)
+
+The predicate argument is a function that returns a boolean value and is applied to each element in the iterable argument. The iterable argument can be a list, tuple, or any other iterable object.
+
+numbers = [1, 2, 3, 4, 5]
+evens = filter(lambda x: x % 2 == 0, numbers)
+print(list(evens))
+
+-->reduce
+The reduce function is a higher-order function that applies a function to a sequence and returns a single value. It is a part of the functools module in Python 
+
+reduce(function, iterable)
+
+The function argument is a function that takes in two arguments and returns a single value. The iterable argument is a sequence of elements, such as a list or tuple.
+
+The reduce function applies the function to the first two elements in the iterable and then applies the function to the result and the next element, and so on. The reduce function returns the final result.
+
+Here is an example of how to use the reduce function:
+
+from functools import reduce
+numbers = [1, 2, 3, 4, 5]
+sum = reduce(lambda x, y: x + y, numbers)
+print(sum)
+
+In the above example, the reduce function applies the lambda function lambda x, y: x + y to the elements in the numbers list. The lambda function adds the two arguments x and y and returns the result. The reduce function applies the lambda function to the first two elements in the list (1 and 2), then applies the function to the result (3) and the next element (3), and so on. The final result is the sum of all the elements in the list, which is 15.
+
+-----------Day 54-----------
+'is' vs '==' in Python : 
+In Python, is and == are both comparison operators that can be used to check if two values are equal. 
+The is operator compares the identity of two objects, while the == operator compares the values of the objects. This means that is will only return True if the objects being compared are the exact same object in memory, while == will return True if the objects have the same value.
+
+For example:
+
+a = [1, 2, 3]
+b = [1, 2, 3]
+
+print(a == b)  # True
+print(a is b)  # False
+
+---------------Day 58---------------------
+-->Constructor : 
+A constructor is a special method in a class used to create and initialize an object of a class. There are different types of constructors. Constructor is invoked automatically when an object of a class is created.
+
+A constructor is a unique function that gets called automatically when an object is created of a class. The main purpose of a constructor is to initialize or assign values to the data members of that class. It cannot return any value other than None.
+
+def __init__(self):
+	# initializations
+
+init is one of the reserved functions in Python. In Object Oriented Programming, it is known as a constructor.
+
+Types of Constructors in Python :
+1. Parameterized Constructor
+2. Default Constructor
+
+Parameterized Constructor in Python
+When the constructor accepts arguments along with self, it is known as parameterized constructor.
+These arguments can be used inside the class to assign the values to the data members.
+
+class Details:
+    def __init__(self, animal, group):
+        self.animal = animal
+        self.group = group
+
+Default Constructor in Python : 
+
+When the constructor doesn't accept any arguments from the object and has only one argument, self, in the constructor, it is known as a Default constructor.
+
+class Details:
+  def __init__(self):
+    print("animal Crab belongs to Crustaceans group")
+obj1=Details()
+
+---------------------Day 59--------------------
+-->Decorators
+Python decorators are a powerful and versatile tool that allow you to modify the behavior of functions and methods. They are a way to extend the functionality of a function or method without modifying its source code.
+
+A decorator is a function that takes another function as an argument and returns a new function that modifies the behavior of the original function. The new function is often referred to as a "decorated" function. The basic syntax for using a decorator is the following:
+
+@decorator_function
+def my_function():
+    pass
+
+The @decorator_function notation is just a shorthand for the following code:
+def my_function():
+    pass
+my_function = decorator_function(my_function)
+
+Decorators are often used to add functionality to functions and methods, such as logging, memoization, and access control.
+
+**NOTE** Practical use case :
+One common use of decorators is to add logging to a function. For example, you could use a decorator to log the arguments and return value of a function each time it is called:
+
+import logging
+
+def log_function_call(func):
+    def decorated(*args, **kwargs):
+        logging.info(f"Calling {func.__name__} with args={args}, kwargs={kwargs}")
+        result = func(*args, **kwargs)
+        logging.info(f"{func.__name__} returned {result}")
+        return result
+    return decorated
+
+@log_function_call
+def my_function(a, b):
+    return a + b
+In this example, the log_function_call decorator takes a function as an argument and returns a new function that logs the function call before and after the original function is called.
+
+------------------------Day 60----------------
+--> Getter and setter : 
+Getters : 
+Getters in Python are methods that are used to access the values of an object's properties. They are used to return the value of a specific property, and are typically defined using the @property decorator.
+
+class MyClass:
+    def __init__(self, value):
+        self._value = value
+
+    @property
+    def value(self):
+        return self._value
+
+In this example, the MyClass class has a single property, _value, which is initialized in the init method. The value method is defined as a getter using the @property decorator, and is used to return the value of the _value property.
+
+To use the getter, we can create an instance of the MyClass class, and then access the value property as if it were an attribute:
+
+>>> obj = MyClass(10)
+>>> obj.value
+10
+
+Setters : 
+It is important to note that the getters do not take any parameters and we cannot set the value through getter method.For that we need setter method which can be added by decorating method with @property_name.setter
+
+Here is an example of a class with both getter and setter:
+
+class MyClass:
+    def __init__(self, value):
+        self._value = value
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
+We can use setter method like this:
+
+>>> obj = MyClass(10)
+>>> obj.value = 20
+>>> obj.value
+20
+In conclusion, getters are a convenient way to access the values of an object's properties, while keeping the internal representation of the property hidden. This can be useful for encapsulation and data validation.
+
+-----------------Day 61----------------
+--> Inheritance :
+When a class derives from another class. The child class will inherit all the public and protected properties and methods from the parent class. In addition, it can have its own properties and methods,this is called as inheritance.
+
+class BaseClass:
+  Body of base class
+class DerivedClass(BaseClass):
+  Body of derived class
+
+Derived class inherits features from the base class where new features can be added to it. This results in re-usability of code.
+
+Types of inheritance:
+1. Single inheritance
+2. Multiple inheritance
+3. Multilevel inheritance
+4. Hierarchical Inheritance
+5. Hybrid Inheritance
+
+-------------------Day 62----------------------
+Access specifiers : 
+Access specifiers or access modifiers in python programming are used to limit the access of class variables and class methods outside of class while implementing the concepts of inheritance.
+
+Types of access specifiers : 
+1. Public access modifier
+2. Private access modifier
+3. Protected access modifier
+
+1. Public Access Specifier : 
+All the variables and methods (member functions) in python are by default public. Any instance variable in a class followed by the ‘self’ keyword ie. self.var_name are public accessed.
+
+2. Private Access Modifier :
+By definition, Private members of a class (variables or methods) are those members which are only accessible inside the class. We cannot use private members outside of class.
+
+In Python, there is no strict concept of "private" access modifiers like in some other programming languages. However, a convention has been established to indicate that a variable or method should be considered private by prefixing its name with a double underscore (__). This is known as a "weak internal use indicator" and it is a convention only, not a strict rule. Code outside the class can still access these "private" variables and methods, but it is generally understood that they should not be accessed or modified.
+
+Name mangling : 
+Name mangling in Python is a technique used to protect class-private and superclass-private attributes from being accidentally overwritten by subclasses. Names of class-private and superclass-private attributes are transformed by the addition of a single leading underscore and a double leading underscore respectively.
+
+3. Protected Access Modifier :
+In object-oriented programming (OOP), the term "protected" is used to describe a member (i.e., a method or attribute) of a class that is intended to be accessed only by the class itself and its subclasses. In Python, the convention for indicating that a member is protected is to prefix its name with a single underscore (_). For example, if a class has a method called _my_method, it is indicating that the method should only be accessed by the class itself and its subclasses.
+
+It's important to note that the single underscore is just a naming convention, and does not actually provide any protection or restrict access to the member. The syntax we follow to make any variable protected is to write variable name followed by a single underscore (_) ie. _varName.
+
+-------------------------Day 65-----------------
+--> Static method : 
+Static methods in Python are methods that belong to a class rather than an instance of the class. They are defined using the @staticmethod decorator and do not have access to the instance of the class (i.e. self). They are called on the class itself, not on an instance of the class. Static methods are often used to create utility functions that don't need access to instance data.
+
+class Math:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+result = Math.add(1, 2)
+print(result) # Output: 3
+
+-----------------------Day 66------------------
+Instance vs class variables : 
+In Python, variables can be defined at the class level or at the instance level. Understanding the difference between these types of variables is crucial for writing efficient and maintainable code.
+
+Class Variables : 
+Class variables are defined at the class level and are shared among all instances of the class. They are defined outside of any method and are usually used to store information that is common to all instances of the class. For example, a class variable can be used to store the number of instances of a class that have been created.
+
+class MyClass:
+    class_variable = 0
+    
+    def __init__(self):
+        MyClass.class_variable += 1
+        
+    def print_class_variable(self):
+        print(MyClass.class_variable)
+        
+
+obj1 = MyClass()
+obj2 = MyClass()
+
+obj1.print_class_variable() # Output: 2
+obj2.print_class_variable() # Output: 2
+In the example above, the class_variable is shared among all instances of the class MyClass. When we create new instances of MyClass, the value of class_variable is incremented. When we call the print_class_variable method on obj1 and obj2, we get the same value of class_variable.
+
+Instance Variables : 
+Instance variables are defined at the instance level and are unique to each instance of the class. They are defined inside the init method and are usually used to store information that is specific to each instance of the class. For example, an instance variable can be used to store the name of an employee in a class that represents an employee.
+
+class MyClass:
+    def __init__(self, name):
+        self.name = name
+        
+    def print_name(self):
+        print(self.name)
+
+obj1 = MyClass("John")
+obj2 = MyClass("Jane")
+
+obj1.print_name() # Output: John
+obj2.print_name() # Output: Jane
+In the example above, each instance of the class MyClass has its own value for the name variable. When we call the print_name method on obj1 and obj2, we get different values for name.
+
+-----------------------Day 69----------------
+Python Class Methods : 
+
+In Python, classes are a way to define custom data types that can store data and define functions that can manipulate that data. One type of function that can be defined within a class is called a "method." 
+
+What are Python Class Methods?
+A class method is a type of method that is bound to the class and not the instance of the class. In other words, it operates on the class as a whole, rather than on a specific instance of the class. Class methods are defined using the "@classmethod" decorator, followed by a function definition. The first argument of the function is always "cls," which represents the class itself.
+
+Why Use Python Class Methods?
+Class methods are useful in several situations. For example, you might want to create a factory method that creates instances of your class in a specific way. You could define a class method that creates the instance and returns it to the caller. Another common use case is to provide alternative constructors for your class. This can be useful if you want to create instances of your class in multiple ways, but still have a consistent interface for doing so.
+
+How to Use Python Class Methods
+To define a class method, you simply use the "@classmethod" decorator before the method definition. The first argument of the method should always be "cls," which represents the class itself.
+
+class ExampleClass:
+    @classmethod
+    def factory_method(cls, argument1, argument2):
+        return cls(argument1, argument2)
+
+---------------------------Day 72---------------------
+Super keyword in Python :
+The super() keyword in Python is used to refer to the parent class. It is especially useful when a class inherits from multiple parent classes and you want to call a method from one of the parent classes.
+
+When a class inherits from a parent class, it can override or extend the methods defined in the parent class. However, sometimes you might want to use the parent class method in the child class. This is where the super() keyword comes in handy.
+
+class ParentClass:
+    def parent_method(self):
+        print("This is the parent method.")
+
+class ChildClass(ParentClass):
+    def child_method(self):
+        print("This is the child method.")
+        super().parent_method()
+
+child_object = ChildClass()
+child_object.child_method()
+
+------------------Day 77-------------------
+Operator Overloading in Python :
+Operator Overloading is a feature in Python that allows developers to redefine the behavior of mathematical and comparison operators for custom data types. This means that you can use the standard mathematical operators (+, -, *, /, etc.) and comparison operators (>, <, ==, etc.) in your own classes, just as you would for built-in data types like int, float, and str.
+
+Why do we need operator overloading?
+Operator overloading allows you to create more readable and intuitive code. For instance, consider a custom class that represents a point in 2D space. You could define a method called 'add' to add two points together, but using the + operator makes the code more concise and readable:
+
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+p3 = p1 + p2
+print(p3.x, p3.y) # prints 4, 6
+
+How to overload an operator in Python?
+You can overload an operator in Python by defining special methods in your class. These methods are identified by their names, which start and end with double underscores (__). Here are some of the most commonly overloaded operators and their corresponding special methods:
+
++ : __add__
+- : __sub__
+* : __mul__
+/ : __truediv__
+< : __lt__
+> : __gt__
+== : __eq__
+For example, if you want to overload the + operator to add two instances of a custom class, you would define the add method:
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+It's important to note that operator overloading is not limited to the built-in operators, you can overload any user-defined operator as well.
+
+------------------------Day 86--------------------------
+Walrus Operator in Python : 
+The Walrus Operator is a new addition to Python 3.8 and allows you to assign a value to a variable within an expression. This can be useful when you need to use a value multiple times in a loop, but don't want to repeat the calculation.
+
+The Walrus Operator is represented by the := syntax and can be used in a variety of contexts including while loops and if statements.
+
+numbers = [1, 2, 3, 4, 5]
+
+while (n := len(numbers)) > 0:
+    print(numbers.pop())
+
+------------------------------Day 91----------------------
+Generators in Python
+Generators in Python are special type of functions that allow you to create an iterable sequence of values. A generator function returns a generator object, which can be used to generate the values one-by-one as you iterate over it. Generators are a powerful tool for working with large or complex data sets, as they allow you to generate the values on-the-fly, rather than having to create and store the entire sequence in memory.
+
+Benefits of Generators
+Generators offer several benefits over other types of sequences, such as lists, tuples, and sets. One of the main benefits of generators is that they allow you to generate the values on-the-fly, rather than having to create and store the entire sequence in memory. This makes generators a powerful tool for working with large or complex data sets, as you can generate the values as you need them, rather than having to store them all in memory at once.
+
+Another benefit of generators is that they are lazy, which means that the values are generated only when they are requested. This allows you to generate the values in a more efficient and memory-friendly manner, as you don't have to generate all the values up front.
+
+---------------------------Day 92---------------------
+Function Caching in Python
+Function caching is a technique for improving the performance of a program by storing the results of a function call so that you can reuse the results instead of recomputing them every time the function is called. This can be particularly useful when a function is computationally expensive, or when the inputs to the function are unlikely to change frequently.
+
+In Python, function caching can be achieved using the functools.lru_cache decorator. The functools.lru_cache decorator is used to cache the results of a function so that you can reuse the results instead of recomputing them every time the function is called.
+
+Benefits of Function Caching
+Function caching can have a significant impact on the performance of a program, particularly for computationally expensive functions. By caching the results of a function, you can avoid having to recompute the results every time the function is called, which can save a significant amount of time and computational resources.
+
+Another benefit of function caching is that it can simplify the code of a program by removing the need to manually cache the results of a function. With the functools.lru_cache decorator, the caching is handled automatically, so you can focus on writing the core logic of your program.
+
+---------------------------Day 95---------------------
+Regular Expressions in Python
+Regular expressions, or "regex" for short, are a powerful tool for working with strings and text data in Python. They allow you to match and manipulate strings based on patterns, making it easy to perform complex string operations with just a few lines of code.
+
+Metacharacters in regular expressions
+[]  Represent a character class
+^   Matches the beginning
+$   Matches the end
+.   Matches any character except newline
+?   Matches zero or one occurrence.
+|   Means OR Matches with any of the characters
+    separated by it.
+*   Any number of occurrences (including 0 occurrences)
++   One or more occurrences
+{}  Indicate number of occurrences of a preceding RE 
+    to match.
+()  Enclose a group of REs
+Find list of more meta characters here - https://www.ibm.com/docs/en/rational-clearquest/9.0.1?topic=tags-meta-characters-in-regular-expressions
+
+Importing re Package
+In Python, regular expressions are supported by the re module. The basic syntax for working with regular expressions in Python is as follows:
+
+import re
+Searching for a pattern in re using re.search() Method
+re.search() method either returns None (if the pattern doesn’t match), or a re.MatchObject that contains information about the matching part of the string. This method stops after the first match, so this is best suited for testing a regular expression more than extracting data. We can use re.search method like this to search for a pattern in regular expression:
+
+# Define a regular expression pattern
+pattern = r"expression"
+
+# Match the pattern against a string
+text = "Hello, world!"
+
+match = re.search(pattern, text)
+
+if match:
+    print("Match found!")
+else:
+    print("Match not found.")
+Searching for a pattern in re using re.findall() Method
+You can also use the re.findall function to find all occurrences of the pattern in a string:
+
+import re
+pattern = r"expression"
+text = "The cat is in the hat."
+
+matches = re.findall(pattern, text)
+
+print(matches)
+# Output: ['cat', 'hat']
+Replacing a pattern
+The following example shows how to replace a pattern in a string:
+
+import re
+pattern = r"[a-z]+at"
+text = "The cat is in the hat."
+
+matches = re.findall(pattern, text)
+
+print(matches)
+# Output: ['cat', 'hat']
+
+new_text = re.sub(pattern, "dog", text)
+
+print(new_text)
+# Output: "The dog is in the dog."
+Extracting information from a string
+The following example shows how to extract information from a string using regular expressions:
+
+import re
+
+text = "The email address is example@example.com."
+
+pattern = r"\w+@\w+\.\w+"
+
+match = re.search(pattern, text)
+
+if match:
+    email = match.group()
+    print(email)
+# Output: example@example.com
