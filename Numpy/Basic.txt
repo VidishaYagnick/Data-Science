@@ -1,0 +1,71 @@
+What is Numpy ? 
+NumPy is a Python library used for working with arrays.
+It also has functions for working in domain of linear algebra, fourier transform, and matrices.
+
+Why use Numpy ?
+1. Provides efficient storage
+2. It also provides better ways of handling data for processing
+3. It is fast
+4. Numpy uses relatively less memory to store data
+
+Why is NumPy Faster Than Lists?
+NumPy arrays are stored at one continuous place in memory unlike lists, so processes can access and manipulate them very efficiently.
+
+This behavior is called locality of reference in computer science.
+
+Which Language is NumPy written in?
+NumPy is a Python library and is written partially in Python, but most of the parts that require fast computation are written in C or C++.
+
+Create a NumPy ndarray Object : 
+The array object in NumPy is called ndarray.
+We can create a NumPy ndarray object by using the array() function.
+
+Array Creation Methods : 
+1. Conversion from other Python structures (i.e. lists and tuples) : To create an ndarray, we can pass a list, tuple or any array-like object into the array() method, and it will be converted into an ndarray.
+
+arr = numpy.array([1,2,3,4])
+
+Dimensions in Arrays :
+A dimension in arrays is one level of array depth (nested arrays).
+
+nested array: are arrays that have arrays as their elements.
+
+0-D Arrays :
+0-D arrays, or Scalars, are the elements in an array. Each value in an array is a 0-D array.
+
+arr = np.array(42)
+
+1-D Arrays : 
+An array that has 0-D arrays as its elements is called uni-dimensional or 1-D array.
+
+arr = np.array([1, 2, 3, 4, 5])
+
+2-D Arrays : 
+An array that has 1-D arrays as its elements is called a 2-D array.
+These are often used to represent matrix or 2nd order tensors.
+
+NumPy has a whole sub module dedicated towards matrix operations called numpy.mat
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+
+Check Number of Dimensions?
+NumPy Arrays provides the ndim attribute that returns an integer that tells us how many dimensions the array have.
+
+Higher Dimensional Arrays : 
+An array can have any number of dimensions.
+When the array is created, you can define the number of dimensions by using the ndmin argument.
+
+arr = np.array([1, 2, 3, 4], ndmin=5)
+
+Checking the Data Type of an Array
+The NumPy array object has a property called dtype that returns the data type of the array
+
+Get the Shape of an Array : 
+NumPy arrays have an attribute called shape that returns a tuple with each index having the number of corresponding elements.
+
+Reshaping arrays : 
+Reshaping means changing the shape of an array.
+The shape of an array is the number of elements in each dimension.
+By reshaping we can add or remove dimensions or change number of elements in each dimension.
+
+2. Intrinsic NumPy array creation functions (e.g. arange, ones, zeros, etc.) : 
+
